@@ -1,0 +1,48 @@
+<h3>Historico</h3>
+
+<button *ngIf="historyPresent" (click)="toggleHistory(); filtroRazon.value=''; filtroTipo.value='';">
+    Ver Mermas
+</button>
+<button *ngIf="!historyPresent" (click)="toggleHistory(); filtroRazon.value=''; filtroTipo.value='';">
+    Ver Historial
+</button>
+<table>
+    <thead>
+        <th>
+            <input #filtroTipo>
+            <p>Tipo</p>
+        </th>
+        <th>
+            <input #filtroRazon>
+            <p>Razon</p>
+        </th>
+        <th>
+            <button (click)="filterHistory({ TransactionType: filtroTipo.value, Purpose: filtroRazon.value })">
+                Filtrar
+            </button>
+            <p>Producto</p>
+        </th>
+        <th>
+            <br>
+            <p>Unidad</p>
+        </th>
+        <th>
+            <br>
+            <p>Cantidad</p>
+        </th>
+        <th>
+            <br>
+            Fecha
+        </th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let history of historys">
+            <td>{{ history.transactionType }}</td>
+            <td>{{ history.purpose }}</td>
+            <td>{{ history.productName }}</td>
+            <td>{{ history.unit }}</td>
+            <td>{{ history.quantity }}</td>
+            <td>{{ history.created }}</td>
+        </tr>
+    </tbody>
+</table>

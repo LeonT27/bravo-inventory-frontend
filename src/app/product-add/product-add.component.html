@@ -1,0 +1,21 @@
+<h3>Agregar nuevo producto</h3>
+<div>
+  <label>Nombre: </label>
+  <input #productName />
+
+  <label>Unidad: </label>
+  <select #unitId>
+    <option *ngFor="let unit of units" value="{{ unit.id }}">
+      {{ unit.name }}
+    </option>
+  </select>
+
+  <button
+    (click)="
+      add({ name: productName.value, unitId: toInt(unitId.value) });
+      productName.value = ''
+    "
+  >
+    Guardar
+  </button>
+</div>

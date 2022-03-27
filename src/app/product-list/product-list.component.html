@@ -1,0 +1,25 @@
+<h3>Listado de productos</h3>
+<button routerLink="/products/add">Agregar nuevo producto</button>
+<table>
+  <thead>
+    <th>Nombre</th>
+    <th>Cantidad</th>
+    <th>Unidad</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.name }}</td>
+      <td>{{ product.unit }}</td>
+      <td>{{ product.quantity }}</td>
+      <td>
+        <button routerLink="/products/transaction/{{ product.id }}">
+          Agregar transaccion
+        </button>
+        <button routerLink="/products/history/{{ product.id }}">
+          Ver historico
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

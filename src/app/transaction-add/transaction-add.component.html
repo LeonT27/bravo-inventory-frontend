@@ -1,0 +1,32 @@
+<h3>Agregar nueva transaccion</h3>
+<div>
+  <label>Razon: </label>
+  <input #razon />
+
+  <label>Tipo: </label>
+  <select #tipo>
+    <option
+      *ngFor="let transactionType of transactionTypes"
+      value="{{ transactionType.id }}"
+    >
+      {{ transactionType.name + " " + transactionType.operation }}
+    </option>
+  </select>
+
+  <label>Cantidad: </label>
+  <input type="number" #cantidad value="0" />
+
+  <button
+    (click)="
+      add({
+        purpose: razon.value,
+        transactionTypeId: toInt(tipo.value),
+        quantity: toInt(cantidad.value),
+        productId: 0
+      });
+      razon.value = ''
+    "
+  >
+    Guardar
+  </button>
+</div>
